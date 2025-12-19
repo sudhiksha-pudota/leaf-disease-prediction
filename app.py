@@ -12,7 +12,7 @@ if not os.path.exists(model_path):
     st.warning("Downloading model from Google Drive...")
     gdown.download(url, model_path, quiet = False)
 
-model_path = url
+model_path = "trained_plant_disease_model.keras"
 def model_prediction(test_image):
     model = tf.keras.models.load_model(model_path)
     image = tf.keras.preprocessing.image.load_img(test_image,target_size=(128,128))
@@ -53,3 +53,4 @@ elif(app_mode=="DISEASE RECOGNITION"):
         class_name = ['Early_Blight', 'Healthy', 'Late_Blight']
 
         st.success("Model is Predicting it's a {}".format(class_name[result_index]))
+
